@@ -5,4 +5,5 @@ export const UserMessagesHelper = {
   REGISTER_PASSWORD_NOT_VALID:
     'A Senha deve ter de 4 a 12 caracteres e conter maiúsculas, minúsculas, números e caracteres especiais',
   REGISTER_EMAIL_FOUND: 'Já existe uma conta com o email informado',
+  GET_USER_NOT_FOUND: 'Usuário não encontrado',
 };
