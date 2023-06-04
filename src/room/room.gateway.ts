@@ -26,7 +26,20 @@ export class RoomGateway implements OnGatewayInit, OnGatewayDisconnect{
     this.logger.log('Gateway initialized');
   }
 
-  handleDisconnect(client: any) {
+  async handleDisconnect(client: any) {
+    const existingOnSocket = this.activeSokets.find(
+      socket => socket.id === client.id
+    );
+
+    if(!existingOnSocket) return;
+    this.activeSokets = this.activeSokets.filter(
+      socket => socket.id == client.id
+    );
+
+    await this.service.deleteUserPosition(client.id);
+    client.broadcast.emit(`${existingOnSocket.room}-remove-user`,{socketId: client.id});
+
+
     this.logger.debug(`Client: ${client.id} disconnected`);
   }
 
