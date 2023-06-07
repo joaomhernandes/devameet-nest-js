@@ -111,6 +111,4 @@ export class RoomGateway implements OnGatewayInit, OnGatewayDisconnect{
       socket: client.id
     });
   }
-
-  
 }
